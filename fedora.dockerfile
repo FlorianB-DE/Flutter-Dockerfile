@@ -5,7 +5,7 @@ FROM fedora:${FEDORA_VERSION}
 ARG FLUTTER_VERSION=3.0.5
 
 # prequesites
-RUN yum install -y curl file unzip xz zip mesa-libGL bash git clang cmake ninja-build pkgconfig
+RUN yum install -y curl file unzip xz zip mesa-libGL bash git clang cmake ninja-build pkgconfig which
 
 # install flutter
 WORKDIR /install
