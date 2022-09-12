@@ -1,5 +1,6 @@
-# syntax=docker/dockerfile-upstream:master-labs
 FROM debian:stable-slim
+
+ARG FLUTTER_VERSION=3.0.5
 
 # prequesites
 RUN apt update
@@ -9,11 +10,11 @@ RUN apt install -y curl file unzip xz-utils zip libglu1-mesa bash git clang cmak
 
 # install flutter
 WORKDIR /install
-ADD --keep-git-dir=true https://github.com/flutter/flutter.git ./flutter
+RUN git clone -b "${FLUTTER_VERSION}" --single-branch --depth 1 https://github.com/flutter/flutter.git
 
 # move flutter to /etc/flutter
-RUN ["mv", "flutter", "/etc/flutter"]
-RUN git config --global --add safe.directory /etc/flutter
+RUN mv flutter /etc/flutter
+RUN ["git", "config", "--global", "--add", "safe.directory", "/etc/flutter"]
 
 # cheanup
 WORKDIR /
