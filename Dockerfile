@@ -5,7 +5,7 @@ FROM debian:stable-slim
 RUN apt update
 RUN apt upgrade -y
 
-RUN apt install -y curl file unzip xz-utils zip libglu1-mesa bash git
+RUN apt install -y curl file unzip xz-utils zip libglu1-mesa bash git clang cmake ninja-build pkg-config
 
 # install flutter
 WORKDIR /install
